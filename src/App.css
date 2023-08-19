@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0; /* Adding a background color for clarity */
+}
+
+.app {
+  width: 640px;
+  height: 800px;
+  margin: 2rem;
+  background-image: url("./assets/cloud.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-bar {
+  width: 600px;
+  height: 60px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  border: none;
+  padding: 20px;
+  font-size: 30px;
+}
+
+.date {
+  font-size: 25px;
+}
+
+.weatherIcon {
+  width: 100px;
+}
+
+.location-container {
+  font-size: 30px;
+  text-align: center;
+}
+
+.temperature {
+  font-size: 100px;
+}
