@@ -34,19 +34,55 @@ function App() {
 
   if (data.length > 0) {
     const weatherMain = data[0].weather[0].main.toLowerCase();
-    if (weatherMain === "rain") {
-      weatherBg = "rain";
-    } else if (weatherMain === "clouds") {
-      weatherBg = "warm";
-    } else if (weatherMain === "snow") {
-      weatherBg = "snow";
-    } else if (weatherMain === "mist") {
-      weatherBg = "mist";
-    } else if (temperatureCelsius(data[0].main.temp) > 18) {
-      weatherBg = "hot";
-    } else if (temperatureCelsius(data[0].main.temp) <= 18) {
-      weatherBg = "cold";
+    const tempCelsius = temperatureCelsius(data[0].main.temp);
+
+    switch (weatherMain) {
+      case "rain":
+        weatherBg = "rain";
+        break;
+      case "clouds":
+        weatherBg = "warm";
+        break;
+      case "snow":
+        weatherBg = "snow";
+        break;
+      case "mist":
+        weatherBg = "mist";
+        break;
+      default:
+        if (tempCelsius > 30) {
+          weatherBg = "hot";
+        } else if (tempCelsius <= 18) {
+          weatherBg = "cold";
+        }
     }
+  }
+
+  let imagePath = "/img/mist.png";
+  const weatherMain =
+    data.length > 0 ? data[0].weather[0].main.toLowerCase() : "";
+
+  switch (weatherMain) {
+    case "clouds":
+      imagePath = "/img/clouds.png";
+      break;
+    case "mist":
+      imagePath = "/img/mist.png";
+      break;
+    case "rain":
+      imagePath = "/img/rain.png";
+      break;
+    case "snow":
+      imagePath = "/img/snow.png";
+      break;
+    case "thunderstorm":
+      imagePath = "/img/thunderstorm.png";
+      break;
+    case "clear":
+      imagePath = "/img/sun.png";
+      break;
+    default:
+      imagePath = "/img/mist.png";
   }
 
   return (
@@ -72,11 +108,7 @@ function App() {
                 <div className="temperature">
                   {temperatureCelsius(item.main.temp)}°C
                 </div>
-                <img
-                  src={`https://openweathermap.org/img/w/${item.weather[0].icon}.png`}
-                  className="weatherIcon"
-                  alt=""
-                />
+                <img url={imagePath} className="weatherIcon" alt="" />
                 <div className="weather">{item.weather[0].main}</div>
               </div>
             </div>
