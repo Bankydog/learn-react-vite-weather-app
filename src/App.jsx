@@ -30,31 +30,34 @@ function App() {
 
   const temperatureCelsius = (temp) => (temp - 273.15).toFixed(1);
 
-  let weatherBg = ""; // Declare weatherBg here
+  let weatherBg = "";
 
   if (data.length > 0) {
     const weatherMain = data[0].weather[0].main.toLowerCase();
     const tempCelsius = temperatureCelsius(data[0].main.temp);
 
-    switch (weatherMain) {
-      case "rain":
-        weatherBg = "rain";
-        break;
-      case "clouds":
+    if (weatherMain === "rain" || weatherMain === "thunderstorm") {
+      weatherBg = "rain";
+    } else if (
+      weatherMain === "clouds" &&
+      tempCelsius <= 30 &&
+      tempCelsius > 18
+    ) {
+      weatherBg = "warm";
+    } else if (weatherMain === "clouds" && tempCelsius < 10) {
+      weatherBg = "snow";
+    } else if (weatherMain === "snow") {
+      weatherBg = "snow";
+    } else if (weatherMain === "mist") {
+      weatherBg = "mist";
+    } else {
+      if (tempCelsius > 33) {
+        weatherBg = "hot";
+      } else if (tempCelsius <= 18) {
+        weatherBg = "cold";
+      } else if (tempCelsius <= 33 && tempCelsius > 18) {
         weatherBg = "warm";
-        break;
-      case "snow":
-        weatherBg = "snow";
-        break;
-      case "mist":
-        weatherBg = "mist";
-        break;
-      default:
-        if (tempCelsius > 30) {
-          weatherBg = "hot";
-        } else if (tempCelsius <= 18) {
-          weatherBg = "cold";
-        }
+      }
     }
   }
 
@@ -98,7 +101,7 @@ function App() {
           />
         </form>
         {data.map((item, index) => (
-          <div key={index} className="location-container">
+          <index key={index} className="location-container">
             <div className="wrapper">
               <div className="location">
                 {item.name}, {item.sys.country}
@@ -108,11 +111,55 @@ function App() {
                 <div className="temperature">
                   {temperatureCelsius(item.main.temp)}°C
                 </div>
-                <img src={imagePath} className="weatherIcon" alt="" />
+                <img
+                  src="/imgs/temp_cold.png"
+                  className="tempIcon"
+                  alt="temp_cold"
+                />
+                <span className="tempMinMax">
+                  {temperatureCelsius(item.main.temp_min)}°C
+                </span>
+                <img
+                  src="/imgs/temp_hot.png"
+                  className="tempIcon"
+                  alt="temp_cold"
+                />
+                <span className="tempMinMax">
+                  {temperatureCelsius(item.main.temp_max)}°C
+                </span>
+                <div>
+                  <img
+                    src={imagePath}
+                    className="weatherIcon"
+                    alt={item.weather[0].main}
+                  />
+                </div>
                 <div className="weather">{item.weather[0].main}</div>
+                <div className="containerSun">
+                  <div className="wrapperSunRise">
+                    <img
+                      src="/imgs/sunrise.png"
+                      className="sunRiseSetIcon"
+                      alt="sunrise"
+                    />
+                    <span className="sunRiseSet">
+                      {new Date(item.sys.sunrise * 1000).toLocaleTimeString()}
+                    </span>
+                  </div>
+                  <div className="wrapperSunSet">
+                    <img
+                      src="/imgs/sunset.png"
+                      className="sunRiseSetIcon"
+                      alt="sunset"
+                    />
+                    <span className="sunRiseSet">
+                      {new Date(item.sys.sunset * 1000).toLocaleTimeString()}
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+          </index>
         ))}
       </main>
     </div>

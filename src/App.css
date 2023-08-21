@@ -110,15 +110,20 @@ main {
   font-size: 25px;
 }
 
+.tempIcon {
+  width: 60px;
+}
+
 .weatherIcon {
   width: 100px;
+  margin-top: 15px;
 }
 
 .location-container {
   font-size: 30px;
   padding: 5px;
   width: 400px;
-  height: 400px;
+  height: 620px;
   text-align: center;
   border-radius: 10px;
   background-color: hsl(180, 1%, 84%, 0.7);
@@ -126,4 +131,28 @@ main {
 
 .temperature {
   font-size: 100px;
+  transition: 1s ease;
+}
+
+.tempMinMax {
+  padding: 10px;
+}
+
+.containerSun {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.wrapperSunSet {
+  margin: 5px;
+}
+
+.sunRiseSetIcon {
+  width: 50px;
+}
+
+.sunRiseSet {
+  padding-left: 20px;
 }
