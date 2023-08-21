@@ -107,7 +107,19 @@ main {
 }
 
 .date {
-  font-size: 25px;
+  font-size: 20px;
+}
+
+.containerTemp {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.wrapperTemp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .tempIcon {
@@ -142,11 +154,13 @@ main {
   margin-top: 5px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
 }
 
-.wrapperSunSet {
+.wrapperSunRiseSet {
   margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .sunRiseSetIcon {

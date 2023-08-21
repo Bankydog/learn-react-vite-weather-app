@@ -111,22 +111,28 @@ function App() {
                 <div className="temperature">
                   {temperatureCelsius(item.main.temp)}°C
                 </div>
-                <img
-                  src="/imgs/temp_cold.png"
-                  className="tempIcon"
-                  alt="temp_cold"
-                />
-                <span className="tempMinMax">
-                  {temperatureCelsius(item.main.temp_min)}°C
-                </span>
-                <img
-                  src="/imgs/temp_hot.png"
-                  className="tempIcon"
-                  alt="temp_cold"
-                />
-                <span className="tempMinMax">
-                  {temperatureCelsius(item.main.temp_max)}°C
-                </span>
+                <div className="containerTemp">
+                  <div className="wrapperTemp">
+                    <img
+                      src="/imgs/temp_cold.png"
+                      className="tempIcon"
+                      alt="temp_cold"
+                    />
+                    <span className="tempMinMax">
+                      {temperatureCelsius(item.main.temp_min)}°C
+                    </span>
+                  </div>
+                  <div className="wrapperTemp">
+                    <img
+                      src="/imgs/temp_hot.png"
+                      className="tempIcon"
+                      alt="temp_cold"
+                    />
+                    <span className="tempMinMax">
+                      {temperatureCelsius(item.main.temp_max)}°C
+                    </span>
+                  </div>
+                </div>
                 <div>
                   <img
                     src={imagePath}
@@ -136,7 +142,7 @@ function App() {
                 </div>
                 <div className="weather">{item.weather[0].main}</div>
                 <div className="containerSun">
-                  <div className="wrapperSunRise">
+                  <div className="wrapperSunRiseSet">
                     <img
                       src="/imgs/sunrise.png"
                       className="sunRiseSetIcon"
@@ -146,7 +152,7 @@ function App() {
                       {new Date(item.sys.sunrise * 1000).toLocaleTimeString()}
                     </span>
                   </div>
-                  <div className="wrapperSunSet">
+                  <div className="wrapperSunRiseSet">
                     <img
                       src="/imgs/sunset.png"
                       className="sunRiseSetIcon"
