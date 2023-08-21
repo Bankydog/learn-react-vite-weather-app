@@ -64,25 +64,25 @@ function App() {
 
   switch (weatherMain) {
     case "clouds":
-      imagePath = "/img/clouds.png";
+      imagePath = "/imgs/clouds.png";
       break;
     case "mist":
-      imagePath = "/img/mist.png";
+      imagePath = "/imgs/mist.png";
       break;
     case "rain":
-      imagePath = "/img/rain.png";
+      imagePath = "/imgs/rain.png";
       break;
     case "snow":
-      imagePath = "/img/snow.png";
+      imagePath = "/imgs/snow.png";
       break;
     case "thunderstorm":
-      imagePath = "/img/thunderstorm.png";
+      imagePath = "/imgs/thunderstorm.png";
       break;
     case "clear":
-      imagePath = "/img/sun.png";
+      imagePath = "/imgs/sun.png";
       break;
     default:
-      imagePath = "/img/mist.png";
+      imagePath = "/imgs/mist.png";
   }
 
   return (
@@ -108,7 +108,7 @@ function App() {
                 <div className="temperature">
                   {temperatureCelsius(item.main.temp)}°C
                 </div>
-                <img url={imagePath} className="weatherIcon" alt="" />
+                <img src={imagePath} className="weatherIcon" alt="" />
                 <div className="weather">{item.weather[0].main}</div>
               </div>
             </div>
