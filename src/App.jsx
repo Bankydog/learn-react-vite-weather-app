@@ -36,29 +36,22 @@ function App() {
     const weatherMain = data[0].weather[0].main.toLowerCase();
     const tempCelsius = temperatureCelsius(data[0].main.temp);
 
-    if (weatherMain === "rain" || weatherMain === "thunderstorm") {
-      weatherBg = "rain";
-    } else if (
-      weatherMain === "clouds" &&
-      tempCelsius <= 30 &&
-      tempCelsius > 18
-    ) {
-      weatherBg = "warm";
-    } else if (weatherMain === "clouds" && tempCelsius < 10) {
-      weatherBg = "snow";
-    } else if (weatherMain === "snow") {
-      weatherBg = "snow";
-    } else if (weatherMain === "mist") {
-      weatherBg = "mist";
-    } else {
-      if (tempCelsius > 33) {
-        weatherBg = "hot";
-      } else if (tempCelsius <= 18) {
-        weatherBg = "cold";
-      } else if (tempCelsius <= 33 && tempCelsius > 18) {
-        weatherBg = "warm";
-      }
-    }
+    weatherBg =
+      weatherMain === "rain" || weatherMain === "thunderstorm"
+        ? "rain"
+        : weatherMain === "clouds" && tempCelsius <= 30 && tempCelsius > 18
+        ? "warm"
+        : weatherMain === "clouds" && tempCelsius < 10
+        ? "snow"
+        : weatherMain === "snow"
+        ? "snow"
+        : weatherMain === "mist"
+        ? "mist"
+        : tempCelsius > 33
+        ? "hot"
+        : tempCelsius <= 18
+        ? "cold"
+        : "warm";
   }
 
   let imagePath = "/img/mist.png";
@@ -99,6 +92,7 @@ function App() {
             onChange={(e) => setLocation(e.target.value)}
             value={location}
           />
+          <div className="dropdown"></div>
         </form>
         {data.map((item, index) => (
           <index key={index} className="location-container">

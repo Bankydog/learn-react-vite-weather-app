@@ -168,5 +168,9 @@ main {
 }
 
 .sunRiseSet {
-  padding-left: 20px;
+  width: 190px;
+  margin-top: 5px;
+  /* border: 1px solid; */
+  display: flex;
+  justify-content: end;
 }
